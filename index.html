@@ -581,7 +581,7 @@
 <p><strong>Guarda y verifica que el comportamiento es el esperado</strong></p>
 </div>
 <h2 id="7-ganar-o-perder-el-juego">7. Ganar o perder el juego</h2>
-<p>Se debe finalizar el juego cuando la pelota caiga fuera de la pantalla debajo de la paleta, o cuando el jugador destruya todos los ladrillos.</p>
+<p>Se debe finalizar el juego cuando la pelota caiga fuera de la pantalla debajo de la pala, o cuando el jugador destruya todos los ladrillos.</p>
 <p>Si el jugador elimina todos los ladrillos, se debería mostrar un mensaje de victoria y dar la opción de reiniciar el juego. Por otro lado, si la pelota cae fuera de la pantalla, se debería mostrar un mensaje de derrota y también ofrecer la opción de reiniciar el juego.</p>
 <div class="admonition task">
 <p class="admonition-title">Crear mensaje de victoria</p>
@@ -614,15 +614,31 @@
 </li>
 </ul>
 <p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/eventovictoria.png" data-desc-position="bottom"><img alt="Evento victoria" class="center" src="assets/eventovictoria.png" width="50%"></a></p>
-<p>También queremos dar al jugador la opción de <strong>reiniciar el juego después de ganar</strong>.</p>
+</div>
+<div class="admonition task">
+<p class="admonition-title">Reiniciar el juego después de ganar</p>
+<p>También queremos dar al jugador la opción de <strong>reiniciar el juego después de ganar</strong>. Para ello vamos a crear una variable de escenena llamada "*EstadoJuego".</p>
 <ul>
-<li>Crea un subevento dentro del evento de victoria que acabas de crear. Haz clic en "<strong><em>Agregar condicion</em></strong>" y selecciona la condición "<em>Tecla presiona</em>". En el campo clave, selecciona "Retorno".</li>
+<li>En la pestaña de diseño de la escena, haz clic con el botón derecho del ratón en algún espacio vacío, y selecciona "<em>Propiedades de la escena</em>".</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/eventoreiniciarvictoria.png" data-desc-position="bottom"><img alt="Evento reiniciar victoria" class="center" src="assets/eventoreiniciarvictoria.png" width="50%"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/propiedadesescena.png" data-desc-position="bottom"><img alt="Propiedades de la escena" class="center" src="assets/propiedadesescena.png" width="50%"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/variablesescena.png" data-desc-position="bottom"><img alt="Variables de escena" class="center" src="assets/variablesescena.png" width="50%"></a></p>
 <ul>
-<li>Añade la acción para reiniciar la escena. Selecciona la acción "<strong><em>Cambiar la escena</em></strong>". Selecciona la única escena que tienes en tu proyecto (en mi caso, se llama "Escena sin título"). Esto hará que el juego se reinicie cuando el jugador presione la tecla de retorno después de ganar.</li>
+<li>Por último creamos la variable "<em>EstadoJuego</em>" y le asignamos el valor de 0.</li>
 </ul>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/accionreiniciarvictoria.png" data-desc-position="bottom"><img alt="Acción reiniciar victoria" class="center" src="assets/accionreiniciarvictoria.png" width="50%"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/crearvariablesistema.png" data-desc-position="bottom"><img alt="Crear variable de escena" class="center" src="assets/crearvariablesistema.png" width="50%"></a></p>
+<ul>
+<li>En la acción de mostrar el mensaje de victoria, añadimos una nueva acción para establecer el valor de la variable "<em>EstadoJuego</em>" a 1. Esto nos permitirá saber que el juego ha terminado.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/establecervalor.png" data-desc-position="bottom"><img alt="Establecer variable EstadoJuego" class="center" src="assets/establecervalor.png" width="50%"></a></p>
+<ul>
+<li>El evento del mensaje de victoria quedaría algo así:</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/eventovariablevictoria.png" data-desc-position="bottom"><img alt="Evento victoria con variable" class="center" src="assets/eventovariablevictoria.png" width="50%"></a></p>
+<ul>
+<li>Por último, añadimo un nuevo evento que se active cuando la variable "<em>EstadoJuego</em>" sea igual a 1 y el jugador presione la tecla de retorno. La acción de este evento será recargar la escena para reiniciar el juego y poner la variable "<em>EstadoJuego</em>" de nuevo a 0.</li>
+</ul>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="assets/eventoreiniciar.png" data-desc-position="bottom"><img alt="Evento reiniciar juego" class="center" src="assets/eventoreiniciar.png" width="50%"></a></p>
 <p><strong>Guarda y verifica que el comportamiento es el esperado.</strong> </p>
 </div>
 <div class="admonition task">
@@ -651,7 +667,7 @@
 <li>Selecciona el objeto "<em>GameOver</em>" y elige la acción "<em>Mostrar</em>".</li>
 </ul>
 </li>
-<li>Añade un subevento dentro del evento de pérdida de pelota que permita reiniciar el juego al presionar la tecla de retorno, tal y como hicimos en el evento de victoria.</li>
+<li>Por último debemos añadir otra acción, establecer la variable "<em>EstadoJuego</em>" a 1.</li>
 </ul>
 </div>
 
