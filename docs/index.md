@@ -261,7 +261,7 @@ El siguiente paso será agregar ladrillos a la escena.
 
 ## 7. Ganar o perder el juego
 
-Se debe finalizar el juego cuando la pelota caiga fuera de la pantalla debajo de la paleta, o cuando el jugador destruya todos los ladrillos.
+Se debe finalizar el juego cuando la pelota caiga fuera de la pantalla debajo de la pala, o cuando el jugador destruya todos los ladrillos.
 
 Si el jugador elimina todos los ladrillos, se debería mostrar un mensaje de victoria y dar la opción de reiniciar el juego. Por otro lado, si la pelota cae fuera de la pantalla, se debería mostrar un mensaje de derrota y también ofrecer la opción de reiniciar el juego.
 
@@ -290,15 +290,31 @@ Si el jugador elimina todos los ladrillos, se debería mostrar un mensaje de vic
 
     ![Evento victoria](./assets/eventovictoria.png){ .center width="50%" }
 
-    También queremos dar al jugador la opción de **reiniciar el juego después de ganar**.
+!!! task "Reiniciar el juego después de ganar"
 
-    - Crea un subevento dentro del evento de victoria que acabas de crear. Haz clic en "***Agregar condicion***" y selecciona la condición "*Tecla presiona*". En el campo clave, selecciona "Retorno".
-  
-    ![Evento reiniciar victoria](./assets/eventoreiniciarvictoria.png){ .center width="50%" }
+    También queremos dar al jugador la opción de **reiniciar el juego después de ganar**. Para ello vamos a crear una variable de escenena llamada "*EstadoJuego".
 
-    - Añade la acción para reiniciar la escena. Selecciona la acción "***Cambiar la escena***". Selecciona la única escena que tienes en tu proyecto (en mi caso, se llama "Escena sin título"). Esto hará que el juego se reinicie cuando el jugador presione la tecla de retorno después de ganar.
+    - En la pestaña de diseño de la escena, haz clic con el botón derecho del ratón en algún espacio vacío, y selecciona "*Propiedades de la escena*".
+    
+    ![Propiedades de la escena](./assets/propiedadesescena.png){ .center width="50%" }
 
-    ![Acción reiniciar victoria](./assets/accionreiniciarvictoria.png){ .center width="50%" }
+    ![Variables de escena](./assets/variablesescena.png){ .center width="50%" }
+
+    - Por último creamos la variable "*EstadoJuego*" y le asignamos el valor de 0.
+
+    ![Crear variable de escena](./assets/crearvariablesistema.png){ .center width="50%" }
+
+    - En la acción de mostrar el mensaje de victoria, añadimos una nueva acción para establecer el valor de la variable "*EstadoJuego*" a 1. Esto nos permitirá saber que el juego ha terminado.
+
+    ![Establecer variable EstadoJuego](./assets/establecervalor.png){ .center width="50%" }
+
+    - El evento del mensaje de victoria quedaría algo así:
+
+    ![Evento victoria con variable](./assets/eventovariablevictoria.png){ .center width="50%" }
+
+    - Por último, añadimo un nuevo evento que se active cuando la variable "*EstadoJuego*" sea igual a 1 y el jugador presione la tecla de retorno. La acción de este evento será recargar la escena para reiniciar el juego y poner la variable "*EstadoJuego*" de nuevo a 0.
+
+    ![Evento reiniciar juego](./assets/eventoreiniciar.png){ .center width="50%" }
 
     **Guarda y verifica que el comportamiento es el esperado.** 
 
@@ -324,4 +340,4 @@ Si el jugador elimina todos los ladrillos, se debería mostrar un mensaje de vic
     - La acción correspondiente a este evento será eliminar la pelota y mostrar el mensaje de Game Over. Para ello, añadimos las siguientes acciones:
         - Selecciona el objeto "*Pelota*" y elige la acción "*Eliminar*".
         - Selecciona el objeto "*GameOver*" y elige la acción "*Mostrar*".
-    - Añade un subevento dentro del evento de pérdida de pelota que permita reiniciar el juego al presionar la tecla de retorno, tal y como hicimos en el evento de victoria.
+    - Por último debemos añadir otra acción, establecer la variable "*EstadoJuego*" a 1.
